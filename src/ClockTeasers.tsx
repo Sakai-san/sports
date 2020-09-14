@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     videoContainer: {
       position: "relative",
-      height: "100px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -74,18 +73,18 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
       <Grid container>
         <Grid item justify="center" container className={classes.gridRow}>
           <Grid item xs={12}>
-            <div className={classes.videoContainer}>
+            <div className={classes.videoContainer} style={{ height: "300px" }}>
               <div className={classes.iconWrapper}>
-                <PlayCircleOutlineOutlinedIcon />
+                <PlayCircleOutlineOutlinedIcon style={{ fontSize: 50 }} />
               </div>
+              <img src={src0} />
             </div>
-            <img src={src0} />
           </Grid>
         </Grid>
 
         <Grid item justify="center" container className={classes.gridRow}>
           <Grid item xs={3}>
-            <div className={classes.videoContainer}>
+            <div className={classes.videoContainer} style={{ height: "100px" }}>
               <div className={classes.iconWrapper}>
                 <PlayCircleOutlineOutlinedIcon />
               </div>
@@ -93,7 +92,7 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
             </div>
           </Grid>
           <Grid item xs={3}>
-            <div className={classes.videoContainer}>
+            <div className={classes.videoContainer} style={{ height: "100px" }}>
               <div className={classes.iconWrapper}>
                 <PlayCircleOutlineOutlinedIcon />
               </div>
@@ -101,7 +100,7 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
             </div>
           </Grid>
           <Grid item xs={3}>
-            <div className={classes.videoContainer}>
+            <div className={classes.videoContainer} style={{ height: "100px" }}>
               <div className={classes.iconWrapper}>
                 <PlayCircleOutlineOutlinedIcon />
               </div>
