@@ -40,6 +40,7 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
   sectionName,
 }) => {
   const classes = useStyles();
+  const [src0, src1, src2, src3] = teasers;
 
   return (
     <div className={classes.root}>
