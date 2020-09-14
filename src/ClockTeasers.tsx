@@ -15,6 +15,13 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
     },
+    "@keyframes fadeAnimation": {
+      from: { opacity: 0 },
+      to: { opacity: 1 },
+    },
+    title: {
+      animation: "1s fadeAnimation",
+    },
     gridRow: {
       margin: "10px",
     },
@@ -44,10 +51,10 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
 
   return (
     <div className={classes.root}>
-      <h3>{sectionName}</h3>
+      <h3 className={classes.title}>{sectionName}</h3>
       <Grid container>
         <Grid item justify="center" container className={classes.gridRow}>
-          <Grid item xs={12}>
+          <Grid item xs={7}>
             <div className={classes.videoContainer} style={{ height: "300px" }}>
               <div className={classes.iconWrapper}>
                 <PlayCircleOutlineOutlinedIcon style={{ fontSize: 50 }} />
