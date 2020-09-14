@@ -31,8 +31,11 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      transition: "all 1s ease-in",
+      transition: "all 0.2s ease-in-out",
       "&>img": { height: "100%", overflow: "auto" },
+      "&:hover": {
+        transform: "scale(1.1)",
+      },
     },
     iconWrapper: {
       position: "absolute",
