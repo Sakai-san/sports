@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
     },
+    gridRow: {
+      margin: "10px",
+    },
     paper: {
       height: "50px",
       padding: theme.spacing(2),
@@ -67,8 +70,8 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
   return (
     <div className={classes.root}>
       <h3>{sectionName}</h3>
-      <Grid container spacing={3}>
-        <Grid justify="center" container spacing={3}>
+      <Grid container>
+        <Grid item justify="center" container className={classes.gridRow}>
           <Grid item xs={3}>
             <div className={classes.videoContainer}>
               <PlayCircleOutlineIcon />
@@ -77,7 +80,7 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
           </Grid>
         </Grid>
 
-        <Grid justify="center" container spacing={3}>
+        <Grid item justify="center" container className={classes.gridRow}>
           <Grid item xs={3}>
             <div className={classes.videoContainer}>
               <PlayCircleOutlineIcon />
@@ -98,7 +101,7 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
           </Grid>
         </Grid>
 
-        <Grid container justify="center" spacing={3}>
+        <Grid item container justify="center" className={classes.gridRow}>
           <Grid item xs={3}>
             <div className={classes.videoContainer}>
               <PlayCircleOutlineIcon />
