@@ -1,11 +1,9 @@
 // @ts-nocheck
-import React, { FunctionComponent, useEffect, useState, useRef } from "react";
+import React, { FunctionComponent } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import debounce from "lodash.debounce";
-import Paper from "@material-ui/core/Paper";
+
 import Grid from "@material-ui/core/Grid";
 import PlayCircleOutlineOutlinedIcon from "@material-ui/icons/PlayCircleOutlineOutlined";
-import { relative } from "path";
 
 interface ClockTeasersProps {
   sectionName: string;
@@ -19,12 +17,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     gridRow: {
       margin: "10px",
-    },
-    paper: {
-      height: "50px",
-      padding: theme.spacing(2),
-      textAlign: "center",
-      color: theme.palette.text.secondary,
     },
     videoContainer: {
       position: "relative",
@@ -48,27 +40,6 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
   sectionName,
 }) => {
   const classes = useStyles();
-  const [teasersOrdered, setTeasersOrdered] = useState(teasers);
-  const [src0, src1, src2, src3] = teasersOrdered;
-
-  const scrollHandler = (e) => {
-    setTeasersOrdered((prev: ClockTeasersProps["teasers"]) => {
-      const prevOrdered = [...prev];
-
-      return [prevOrdered[1], prevOrdered[2], prevOrdered[3], prevOrdered[0]];
-    });
-  };
-  /*
-  useEffect(() => {
-    window.addEventListener("scroll", debounce(scrollHandler, 100), {
-      passive: true,
-    });
-
-    return () => {
-      window.removeEventListener("scroll", scrollHandler, { passive: true });
-    };
-  }, []);
-  */
 
   return (
     <div className={classes.root}>
