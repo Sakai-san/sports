@@ -62,7 +62,7 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
           <Grid item xs={3}>
             <Paper
               className={classes.paper}
-              style={{ backgroundColor: "maron" }}
+              style={{ backgroundColor: "brown" }}
             >
               <PlayCircleOutlineIcon />
             </Paper>
