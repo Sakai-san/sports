@@ -38,28 +38,19 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
   const [teasersOrdered, setTeasersOrdered] = useState(teasers);
   const [teaser1, teaser2, teaser3, teaser4] = teasersOrdered;
 
+  const scrollHandler = (e) => {
+    setTeasersOrdered((prev: ClockTeasersProps["teasers"]) => {
+      const prevOrdered = [...prev];
+
+      return [prevOrdered[1], prevOrdered[2], prevOrdered[3], prevOrdered[0]];
+    });
+  };
+
   useEffect(() => {
-    window.addEventListener(
-      "scroll",
-      debounce((e) => {
-        ///        console.log(e);
-
-        setTeasersOrdered((prev: ClockTeasersProps["teasers"]) => {
-          const prevOrdered = prev;
-
-          return [
-            prevOrdered[1],
-            prevOrdered[2],
-            prevOrdered[3],
-            prevOrdered[0],
-          ];
-        });
-      }, 100),
-      { passive: true }
-    );
+    window.addEventListener("scroll", debounce(scrollHandler, 100), false);
 
     return () => {
-      window.removeEventListener("scroll", () => null);
+      window.removeEventListener("scroll", scrollHandler, false);
     };
   }, []);
 
