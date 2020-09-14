@@ -4,7 +4,8 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import debounce from "lodash.debounce";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
+import PlayCircleOutlineOutlinedIcon from "@material-ui/icons/PlayCircleOutlineOutlined";
+import { relative } from "path";
 
 interface ClockTeasersProps {
   sectionName: string;
@@ -26,12 +27,17 @@ const useStyles = makeStyles((theme: Theme) =>
       color: theme.palette.text.secondary,
     },
     videoContainer: {
+      position: "relative",
       height: "100px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       transition: "all 1s ease-in",
       "&>img": { height: "100%", overflow: "auto" },
+    },
+    iconWrapper: {
+      position: "absolute",
+      "&>svg": { color: "white" },
     },
   })
 );
@@ -41,22 +47,16 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
 }) => {
   const classes = useStyles();
   const [teasersOrdered, setTeasersOrdered] = useState(teasers);
-  const [src0, src1, src2, src3, src4] = teasersOrdered;
+  const [src0, src1, src2, src3] = teasersOrdered;
 
   const scrollHandler = (e) => {
     setTeasersOrdered((prev: ClockTeasersProps["teasers"]) => {
       const prevOrdered = [...prev];
 
-      return [
-        prevOrdered[1],
-        prevOrdered[2],
-        prevOrdered[3],
-        prevOrdered[4],
-        prevOrdered[0],
-      ];
+      return [prevOrdered[1], prevOrdered[2], prevOrdered[3], prevOrdered[0]];
     });
   };
-
+  /*
   useEffect(() => {
     window.addEventListener("scroll", debounce(scrollHandler, 100), {
       passive: true,
@@ -66,46 +66,46 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
       window.removeEventListener("scroll", scrollHandler, { passive: true });
     };
   }, []);
+  */
 
   return (
     <div className={classes.root}>
       <h3>{sectionName}</h3>
       <Grid container>
         <Grid item justify="center" container className={classes.gridRow}>
-          <Grid item xs={3}>
+          <Grid item xs={12}>
             <div className={classes.videoContainer}>
-              <PlayCircleOutlineIcon />
-              <img src={src0} />
+              <div className={classes.iconWrapper}>
+                <PlayCircleOutlineOutlinedIcon />
+              </div>
             </div>
+            <img src={src0} />
           </Grid>
         </Grid>
 
         <Grid item justify="center" container className={classes.gridRow}>
           <Grid item xs={3}>
             <div className={classes.videoContainer}>
-              <PlayCircleOutlineIcon />
+              <div className={classes.iconWrapper}>
+                <PlayCircleOutlineOutlinedIcon />
+              </div>
               <img src={src1} />
             </div>
           </Grid>
           <Grid item xs={3}>
             <div className={classes.videoContainer}>
-              <PlayCircleOutlineIcon />
+              <div className={classes.iconWrapper}>
+                <PlayCircleOutlineOutlinedIcon />
+              </div>
               <img src={src2} />
             </div>
           </Grid>
           <Grid item xs={3}>
             <div className={classes.videoContainer}>
-              <PlayCircleOutlineIcon />
+              <div className={classes.iconWrapper}>
+                <PlayCircleOutlineOutlinedIcon />
+              </div>
               <img src={src3} />
-            </div>
-          </Grid>
-        </Grid>
-
-        <Grid item container justify="center" className={classes.gridRow}>
-          <Grid item xs={3}>
-            <div className={classes.videoContainer}>
-              <PlayCircleOutlineIcon />
-              <img src={src4} />
             </div>
           </Grid>
         </Grid>
