@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -6,7 +6,7 @@ import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 
 interface ClockTeasersProps {
   sectionName: string;
-  teasers?: any[];
+  teasers: [string, string, string, string];
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -20,6 +20,12 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       color: theme.palette.text.secondary,
     },
+    videoContainer: {
+      height: "100px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
   })
 );
 const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
@@ -27,56 +33,73 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
   sectionName,
 }) => {
   const classes = useStyles();
+  const [teasersOrdered, setTeasersOrdered] = useState(teasers);
+  const [teaser1, teaser2, teaser3, teaser4] = teasersOrdered;
+
+  useEffect(() => {
+    window.addEventListener(
+      "scroll",
+      (e) => {
+        console.log(e);
+      },
+      { passive: true }
+    );
+
+    return () => {
+      window.removeEventListener("scroll", () => null);
+    };
+  });
+
   return (
     <div className={classes.root}>
       <h3>{sectionName}</h3>
       <Grid container spacing={3}>
         <Grid justify="center" container spacing={3}>
           <Grid item xs={3}>
-            <Paper
-              className={classes.paper}
-              style={{ backgroundColor: "blue" }}
+            <div
+              className={classes.videoContainer}
+              style={{ backgroundColor: teaser1 }}
             >
               <PlayCircleOutlineIcon />
-            </Paper>
+            </div>
           </Grid>
         </Grid>
 
         <Grid justify="center" container spacing={3}>
           <Grid item xs={3}>
-            <Paper
-              className={classes.paper}
-              style={{ backgroundColor: "violet" }}
+            <div
+              className={classes.videoContainer}
+              style={{ backgroundColor: teaser2 }}
             >
               <PlayCircleOutlineIcon />
-            </Paper>
+            </div>
           </Grid>
           <Grid item xs={3}>
-            <Paper
-              className={classes.paper}
-              style={{ backgroundColor: "orange" }}
+            <div
+              className={classes.videoContainer}
+              style={{ backgroundColor: teaser3 }}
             >
               <PlayCircleOutlineIcon />
-            </Paper>
+            </div>
           </Grid>
           <Grid item xs={3}>
-            <Paper
-              className={classes.paper}
-              style={{ backgroundColor: "brown" }}
+            <div
+              className={classes.videoContainer}
+              style={{ backgroundColor: teaser4 }}
             >
               <PlayCircleOutlineIcon />
-            </Paper>
+            </div>
           </Grid>
         </Grid>
 
         <Grid container justify="center" spacing={3}>
           <Grid item xs={3}>
-            <Paper
-              className={classes.paper}
+            <div
+              className={classes.videoContainer}
               style={{ backgroundColor: "pink" }}
             >
               <PlayCircleOutlineIcon />
-            </Paper>
+            </div>
           </Grid>
         </Grid>
       </Grid>
