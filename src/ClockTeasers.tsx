@@ -1,5 +1,7 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+// @ts-nocheck
+import React, { FunctionComponent, useEffect, useState, useRef } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import debounce from "lodash.debounce";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
@@ -39,16 +41,27 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
   useEffect(() => {
     window.addEventListener(
       "scroll",
-      (e) => {
-        console.log(e);
-      },
+      debounce((e) => {
+        ///        console.log(e);
+
+        setTeasersOrdered((prev: ClockTeasersProps["teasers"]) => {
+          const prevOrdered = prev;
+
+          return [
+            prevOrdered[1],
+            prevOrdered[2],
+            prevOrdered[3],
+            prevOrdered[0],
+          ];
+        });
+      }, 100),
       { passive: true }
     );
 
     return () => {
       window.removeEventListener("scroll", () => null);
     };
-  });
+  }, []);
 
   return (
     <div className={classes.root}>
