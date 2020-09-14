@@ -4,9 +4,21 @@ import ClockTeasers from "./ClockTeasers";
 
 function App() {
   return (
-    <Container>
-      <ClockTeasers />
-    </Container>
+    <div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <Container>
+        <ClockTeasers sectionName="Featured videos" />
+      </Container>
+    </div>
   );
 }
 
