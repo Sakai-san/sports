@@ -18,19 +18,54 @@ function App() {
       <Container>
         <ClockTeasers
           sectionName="Featured videos"
-          teasers={["#32a852", "#eb83cd", "#153c52", "#2e4534"]}
+          teasers={[
+            "https://www.ticketcorner.ch/obj/media/CH-eventim/galery/kuenstler/s/schweizer-handball-nationalmannschaft-12.jpg",
+            "https://www.srf.ch/static/cms/images/branded_srf_sport/32e0fd.jpg",
+            "https://static.az-cdn.ch/__ip/LNrACSImmpoguhKyRhOPxQ33d9k/c7b6ae412f04d54370632a2b6112277e490ee017/n-wide2x-16x9-far",
+            "https://www.ndr.de/sport/handball/stegefelt100_v-contentgross.jpg",
+            "https://www.zak.de/Bilder/Oddur-Gretarsson-und-der-HBW-Balingen-Weilstetten-steigen-113365.jpg",
+          ]}
+        />
+
+        <ClockTeasers
+          sectionName="National-mannschaft"
+          teasers={[
+            "https://www.ticketcorner.ch/obj/media/CH-eventim/galery/kuenstler/s/schweizer-handball-nationalmannschaft-12.jpg",
+            "https://www.srf.ch/static/cms/images/branded_srf_sport/32e0fd.jpg",
+            "https://static.az-cdn.ch/__ip/LNrACSImmpoguhKyRhOPxQ33d9k/c7b6ae412f04d54370632a2b6112277e490ee017/n-wide2x-16x9-far",
+            "https://www.ndr.de/sport/handball/stegefelt100_v-contentgross.jpg",
+            "https://www.zak.de/Bilder/Oddur-Gretarsson-und-der-HBW-Balingen-Weilstetten-steigen-113365.jpg",
+          ]}
         />
         <ClockTeasers
           sectionName="Swiss league"
-          teasers={["#0c7a29", "#a3a324", "#462647", "#736b6a"]}
+          teasers={[
+            "https://www.ticketcorner.ch/obj/media/CH-eventim/galery/kuenstler/s/schweizer-handball-nationalmannschaft-12.jpg",
+            "https://www.srf.ch/static/cms/images/branded_srf_sport/32e0fd.jpg",
+            "https://static.az-cdn.ch/__ip/LNrACSImmpoguhKyRhOPxQ33d9k/c7b6ae412f04d54370632a2b6112277e490ee017/n-wide2x-16x9-far",
+            "https://www.ndr.de/sport/handball/stegefelt100_v-contentgross.jpg",
+            "https://www.zak.de/Bilder/Oddur-Gretarsson-und-der-HBW-Balingen-Weilstetten-steigen-113365.jpg",
+          ]}
         />
         <ClockTeasers
           sectionName="Amateur league"
-          teasers={["#2d2f80", "#304541", "#c2aebc", "#7d5937"]}
+          teasers={[
+            "https://www.ticketcorner.ch/obj/media/CH-eventim/galery/kuenstler/s/schweizer-handball-nationalmannschaft-12.jpg",
+            "https://www.srf.ch/static/cms/images/branded_srf_sport/32e0fd.jpg",
+            "https://static.az-cdn.ch/__ip/LNrACSImmpoguhKyRhOPxQ33d9k/c7b6ae412f04d54370632a2b6112277e490ee017/n-wide2x-16x9-far",
+            "https://www.ndr.de/sport/handball/stegefelt100_v-contentgross.jpg",
+            "https://www.zak.de/Bilder/Oddur-Gretarsson-und-der-HBW-Balingen-Weilstetten-steigen-113365.jpg",
+          ]}
         />
         <ClockTeasers
           sectionName="Related videos"
-          teasers={["#aceefa", "#f2d9d8", "#403333", "#91838d"]}
+          teasers={[
+            "https://www.ticketcorner.ch/obj/media/CH-eventim/galery/kuenstler/s/schweizer-handball-nationalmannschaft-12.jpg",
+            "https://www.srf.ch/static/cms/images/branded_srf_sport/32e0fd.jpg",
+            "https://static.az-cdn.ch/__ip/LNrACSImmpoguhKyRhOPxQ33d9k/c7b6ae412f04d54370632a2b6112277e490ee017/n-wide2x-16x9-far",
+            "https://www.ndr.de/sport/handball/stegefelt100_v-contentgross.jpg",
+            "https://www.zak.de/Bilder/Oddur-Gretarsson-und-der-HBW-Balingen-Weilstetten-steigen-113365.jpg",
+          ]}
         />
       </Container>
     </div>
