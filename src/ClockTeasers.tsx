@@ -3,6 +3,7 @@ import React, { FunctionComponent, useState } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { CSSTransition, Transition } from "react-transition-group";
 import Grid from "@material-ui/core/Grid";
+import { ParallaxBanner } from "react-scroll-parallax";
 import PlayCircleOutlineOutlinedIcon from "@material-ui/icons/PlayCircleOutlineOutlined";
 
 import "./ClockTeasers.css";
@@ -78,45 +79,70 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
         )}
       </Transition>
 
-      <Grid container>
-        <Grid item justify="center" container className={classes.gridRow}>
-          <Grid item xs={7}>
-            <div className={classes.videoContainer} style={{ height: "300px" }}>
-              <div className={classes.iconWrapper}>
-                <PlayCircleOutlineOutlinedIcon style={{ fontSize: 50 }} />
+      <ParallaxBanner
+        layers={[
+          {
+            props: { style: { opacity: 0.2 } },
+            image: src0,
+            amount: 0.1,
+          },
+        ]}
+        style={{
+          height: "500px",
+        }}
+      >
+        <Grid container>
+          <Grid item justify="center" container className={classes.gridRow}>
+            <Grid item xs={7}>
+              <div
+                className={classes.videoContainer}
+                style={{ height: "300px" }}
+              >
+                <div className={classes.iconWrapper}>
+                  <PlayCircleOutlineOutlinedIcon style={{ fontSize: 50 }} />
+                </div>
+                <img src={src0} />
               </div>
-              <img src={src0} />
-            </div>
+            </Grid>
           </Grid>
-        </Grid>
 
-        <Grid item justify="center" container className={classes.gridRow}>
-          <Grid item xs={3}>
-            <div className={classes.videoContainer} style={{ height: "100px" }}>
-              <div className={classes.iconWrapper}>
-                <PlayCircleOutlineOutlinedIcon />
+          <Grid item justify="center" container className={classes.gridRow}>
+            <Grid item xs={3}>
+              <div
+                className={classes.videoContainer}
+                style={{ height: "100px" }}
+              >
+                <div className={classes.iconWrapper}>
+                  <PlayCircleOutlineOutlinedIcon />
+                </div>
+                <img src={src1} />
               </div>
-              <img src={src1} />
-            </div>
-          </Grid>
-          <Grid item xs={3}>
-            <div className={classes.videoContainer} style={{ height: "100px" }}>
-              <div className={classes.iconWrapper}>
-                <PlayCircleOutlineOutlinedIcon />
+            </Grid>
+            <Grid item xs={3}>
+              <div
+                className={classes.videoContainer}
+                style={{ height: "100px" }}
+              >
+                <div className={classes.iconWrapper}>
+                  <PlayCircleOutlineOutlinedIcon />
+                </div>
+                <img src={src2} />
               </div>
-              <img src={src2} />
-            </div>
-          </Grid>
-          <Grid item xs={3}>
-            <div className={classes.videoContainer} style={{ height: "100px" }}>
-              <div className={classes.iconWrapper}>
-                <PlayCircleOutlineOutlinedIcon />
+            </Grid>
+            <Grid item xs={3}>
+              <div
+                className={classes.videoContainer}
+                style={{ height: "100px" }}
+              >
+                <div className={classes.iconWrapper}>
+                  <PlayCircleOutlineOutlinedIcon />
+                </div>
+                <img src={src3} />
               </div>
-              <img src={src3} />
-            </div>
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      </ParallaxBanner>
     </div>
   );
 };
