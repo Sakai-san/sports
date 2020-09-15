@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
+      marginTop: "50px",
     },
     "@keyframes fadeAnimation": {
       from: { opacity: 0 },
