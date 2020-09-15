@@ -57,12 +57,12 @@ function App() {
             layers={[
               {
                 image:
-                  "https://www.handball.ch/media/7851/awa_handshvoym-2-_bildgroesse-aendern.jpg?width=2280&preferFocalPoint=false&useCropDimensions=false&maxwidth=2500&maxheight=2500&quality=80&lazyload=true&lazyloadPixelated=false&c.focalPoint=0.5%2C0.5&mode=crop&c.finalmode=crop&c.zoom=false",
-                amount: 0.2,
+                  "https://static5.depositphotos.com/1012338/418/v/950/depositphotos_4184789-stock-illustration-handball-poster.jpg",
+                amount: 0.1,
               },
             ]}
             style={{
-              height: "500px",
+              height: "400px",
             }}
           ></ParallaxBanner>
         </Paper>
