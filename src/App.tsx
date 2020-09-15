@@ -1,21 +1,71 @@
 import React from "react";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 import Container from "@material-ui/core/Container";
+import { ParallaxBanner } from "react-scroll-parallax";
+import Paper from "@material-ui/core/Paper";
 import ClockTeasers from "./ClockTeasers";
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+    container: {
+      marginTop: "10px",
+    },
+  })
+);
+
 function App() {
+  const classes = useStyles();
+
   return (
     <div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <Container>
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" className={classes.title}>
+              News
+            </Typography>
+            <Button color="inherit">Login</Button>
+          </Toolbar>
+        </AppBar>
+      </div>
+      <Container className={classes.container}>
+        <Paper elevation={3}>
+          <ParallaxBanner
+            layers={[
+              {
+                image:
+                  "https://www.handball.ch/media/7851/awa_handshvoym-2-_bildgroesse-aendern.jpg?width=2280&preferFocalPoint=false&useCropDimensions=false&maxwidth=2500&maxheight=2500&quality=80&lazyload=true&lazyloadPixelated=false&c.focalPoint=0.5%2C0.5&mode=crop&c.finalmode=crop&c.zoom=false",
+                amount: 0.2,
+              },
+            ]}
+            style={{
+              height: "500px",
+            }}
+          ></ParallaxBanner>
+        </Paper>
         <ClockTeasers
           sectionName="Featured videos"
           teasers={[
