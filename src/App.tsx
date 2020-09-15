@@ -106,7 +106,7 @@ function App() {
         <ClockTeasers
           sectionName="Related videos"
           teasers={[
-            "https://juntanlaycosports.com/img/s/v-10/p3014362453-3.jpg",
+            "https://mauritiusdirectory.org/wp-content/uploads/2017/07/DEeO_feXgAEP7O5.jpg",
             "https://www.sueddeutsche.de/image/sz.1.4551655/704x396?v=1564854000",
             "https://www.visitbournemouth.com/images/beachhandball/beachhandball%205.jpg",
             "https://s2.dmcdn.net/v/NSjkz1Qt87T-sO6xz/x1080",
