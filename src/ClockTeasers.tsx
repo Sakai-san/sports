@@ -178,33 +178,117 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
               <div
                 className={classes.videoContainer}
                 style={{ height: "100px" }}
+                onClick={() => setIsOpen(true)}
               >
-                <div className={classes.iconWrapper}>
-                  <PlayCircleOutlineOutlinedIcon />
-                </div>
-                <img src={src1} />
+                {isOpen ? (
+                  <Modal
+                    isOpen={isOpen}
+                    onRequestClose={() => setIsOpen(false)}
+                    style={customStyles}
+                  >
+                    <>
+                      <button
+                        style={{ display: "none" }}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        close
+                      </button>
+                      <iframe
+                        width={(600 * 3) / 2}
+                        height={600}
+                        src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      />
+                    </>
+                  </Modal>
+                ) : (
+                  <>
+                    <div className={classes.iconWrapper}>
+                      <PlayCircleOutlineOutlinedIcon />
+                    </div>
+                    <img src={src1} />
+                  </>
+                )}
               </div>
             </Grid>
             <Grid item xs={3}>
               <div
                 className={classes.videoContainer}
                 style={{ height: "100px" }}
+                onClick={() => setIsOpen(true)}
               >
-                <div className={classes.iconWrapper}>
-                  <PlayCircleOutlineOutlinedIcon />
-                </div>
-                <img src={src2} />
+                {isOpen ? (
+                  <Modal
+                    isOpen={isOpen}
+                    onRequestClose={() => setIsOpen(false)}
+                    style={customStyles}
+                  >
+                    <>
+                      <button
+                        style={{ display: "none" }}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        close
+                      </button>
+                      <iframe
+                        width={(600 * 3) / 2}
+                        height={600}
+                        src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      />
+                    </>
+                  </Modal>
+                ) : (
+                  <>
+                    <div className={classes.iconWrapper}>
+                      <PlayCircleOutlineOutlinedIcon />
+                    </div>
+                    <img src={src2} />
+                  </>
+                )}
               </div>
             </Grid>
             <Grid item xs={3}>
               <div
                 className={classes.videoContainer}
                 style={{ height: "100px" }}
+                onClick={() => setIsOpen(true)}
               >
-                <div className={classes.iconWrapper}>
-                  <PlayCircleOutlineOutlinedIcon />
-                </div>
-                <img src={src3} />
+                {isOpen ? (
+                  <Modal
+                    isOpen={isOpen}
+                    onRequestClose={() => setIsOpen(false)}
+                    style={customStyles}
+                  >
+                    <>
+                      <button
+                        style={{ display: "none" }}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        close
+                      </button>
+                      <iframe
+                        width={(600 * 3) / 2}
+                        height={600}
+                        src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      />
+                    </>
+                  </Modal>
+                ) : (
+                  <>
+                    <div className={classes.iconWrapper}>
+                      <PlayCircleOutlineOutlinedIcon />
+                    </div>
+                    <img src={src3} />
+                  </>
+                )}
               </div>
             </Grid>
           </Grid>
