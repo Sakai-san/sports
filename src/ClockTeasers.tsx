@@ -5,8 +5,42 @@ import { CSSTransition, Transition } from "react-transition-group";
 import Grid from "@material-ui/core/Grid";
 import { ParallaxBanner } from "react-scroll-parallax";
 import PlayCircleOutlineOutlinedIcon from "@material-ui/icons/PlayCircleOutlineOutlined";
+import Modal from "react-modal";
 
 import "./ClockTeasers.css";
+
+const duration = 1000;
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
+const defaultStyle = {
+  transition: `opacity ${duration}ms ease-out`,
+  opacity: 0,
+};
+
+const transitionStyles = {
+  entering: {
+    opacity: 1,
+  },
+  entered: {
+    opacity: 1,
+  },
+  exiting: {
+    opacity: 0,
+  },
+  exited: {
+    opacity: 0,
+  },
+};
 
 interface ClockTeasersProps {
   sectionName: string;
@@ -43,30 +77,31 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
+
+Modal.setAppElement("#root");
+
 const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
   teasers,
   sectionName,
 }) => {
   const [inProp, setInProp] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   const classes = useStyles();
   const [src0, src1, src2, src3] = teasers;
-  const duration = 300;
-
-  const defaultStyle = {
-    transition: `opacity ${duration}ms ease-in-out`,
-    opacity: 0,
-  };
-
-  const transitionStyles = {
-    entering: { opacity: 1 },
-    entered: { opacity: 1 },
-    exiting: { opacity: 0 },
-    exited: { opacity: 0 },
-  };
 
   return (
     <div className={classes.root}>
-      <Transition in={inProp} timeout={duration}>
+      <Transition
+        mountOnEnter={false}
+        in={inProp}
+        enter={false}
+        timeout={duration}
+      >
         {(state) => (
           <div
             style={{
@@ -78,6 +113,10 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
           </div>
         )}
       </Transition>
+
+      <button type="button" onClick={() => setInProp(true)}>
+        Click to Enter
+      </button>
 
       <ParallaxBanner
         layers={[
@@ -97,11 +136,39 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
               <div
                 className={classes.videoContainer}
                 style={{ height: "300px" }}
+                onClick={() => setIsOpen(true)}
               >
-                <div className={classes.iconWrapper}>
-                  <PlayCircleOutlineOutlinedIcon style={{ fontSize: 50 }} />
-                </div>
-                <img src={src0} />
+                {isOpen ? (
+                  <Modal
+                    isOpen={isOpen}
+                    onRequestClose={() => setIsOpen(false)}
+                    style={customStyles}
+                  >
+                    <>
+                      <button
+                        style={{ display: "none" }}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        close
+                      </button>
+                      <iframe
+                        width={(600 * 3) / 2}
+                        height={600}
+                        src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      />
+                    </>
+                  </Modal>
+                ) : (
+                  <>
+                    <div className={classes.iconWrapper}>
+                      <PlayCircleOutlineOutlinedIcon style={{ fontSize: 50 }} />
+                    </div>
+                    <img src={src0} />
+                  </>
+                )}
               </div>
             </Grid>
           </Grid>

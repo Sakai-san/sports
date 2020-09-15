@@ -12,9 +12,11 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-modal": "^3.10.6",
     "lodash.debounce": "^4.0.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2",
     "react-scripts": "3.4.3",
     "react-scroll-parallax": "^2.3.4",
     "react-transition-group": "^4.4.1",
@@ -42,6 +44,7 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash.debounce": "^4.0.6"
+    "@types/lodash.debounce": "^4.0.6",
+    "@types/react-transition-group": "^4.4.0"
   }
 }

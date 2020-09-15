@@ -1,14 +1,21 @@
-.my-node-enter {
+.fade-appear {
+  border: 2px solid red;
+}
+
+.fade-enter {
   opacity: 0;
 }
-.my-node-enter-active {
+
+.fade-enter-active {
   opacity: 1;
   transition: opacity 200ms;
 }
-.my-node-exit {
+
+.fade-exit {
   opacity: 1;
 }
-.my-node-exit-active {
+
+.fade-exit-active {
   opacity: 0;
   transition: opacity 200ms;
 }
