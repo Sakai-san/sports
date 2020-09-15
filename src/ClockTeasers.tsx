@@ -1,9 +1,11 @@
 // @ts-nocheck
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-
+import { CSSTransition } from "react-transition-group";
 import Grid from "@material-ui/core/Grid";
 import PlayCircleOutlineOutlinedIcon from "@material-ui/icons/PlayCircleOutlineOutlined";
+
+import "./ClockTeasers.css";
 
 interface ClockTeasersProps {
   sectionName: string;
@@ -19,9 +21,6 @@ const useStyles = makeStyles((theme: Theme) =>
     "@keyframes fadeAnimation": {
       from: { opacity: 0 },
       to: { opacity: 1 },
-    },
-    title: {
-      animation: "1s fadeAnimation",
     },
     gridRow: {
       margin: "10px",
@@ -47,12 +46,29 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
   teasers,
   sectionName,
 }) => {
+  const [inProp, setInProp] = useState(true);
   const classes = useStyles();
   const [src0, src1, src2, src3] = teasers;
+  const duration = 300;
+
+  const defaultStyle = {
+    transition: `opacity ${duration}ms ease-in-out`,
+    opacity: 0,
+  };
+
+  const transitionStyles = {
+    entering: { opacity: 1 },
+    entered: { opacity: 1 },
+    exiting: { opacity: 0 },
+    exited: { opacity: 0 },
+  };
 
   return (
     <div className={classes.root}>
-      <h3 className={classes.title}>{sectionName}</h3>
+      <CSSTransition in={inProp} timeout={200} classNames="my-node">
+        <h3>{sectionName}</h3>
+      </CSSTransition>
+
       <Grid container>
         <Grid item justify="center" container className={classes.gridRow}>
           <Grid item xs={7}>

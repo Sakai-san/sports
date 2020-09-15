@@ -75,7 +75,6 @@ function App() {
             "https://www.ndr.de/sport/handball/stegefelt100_v-contentgross.jpg",
           ]}
         />
-
         <ClockTeasers
           sectionName="National-mannschaft"
           teasers={[
