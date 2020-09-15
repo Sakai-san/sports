@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { FunctionComponent, useState } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { CSSTransition } from "react-transition-group";
+import { CSSTransition, Transition } from "react-transition-group";
 import Grid from "@material-ui/core/Grid";
 import PlayCircleOutlineOutlinedIcon from "@material-ui/icons/PlayCircleOutlineOutlined";
 
@@ -46,7 +46,7 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
   teasers,
   sectionName,
 }) => {
-  const [inProp, setInProp] = useState(true);
+  const [inProp, setInProp] = useState(false);
   const classes = useStyles();
   const [src0, src1, src2, src3] = teasers;
   const duration = 300;
@@ -65,9 +65,18 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
 
   return (
     <div className={classes.root}>
-      <CSSTransition in={inProp} timeout={200} classNames="my-node">
-        <h3>{sectionName}</h3>
-      </CSSTransition>
+      <Transition in={inProp} timeout={duration}>
+        {(state) => (
+          <div
+            style={{
+              ...defaultStyle,
+              ...transitionStyles[state],
+            }}
+          >
+            <h3>{sectionName}</h3>
+          </div>
+        )}
+      </Transition>
 
       <Grid container>
         <Grid item justify="center" container className={classes.gridRow}>
