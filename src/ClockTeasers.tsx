@@ -1,7 +1,5 @@
-// @ts-nocheck
 import React, { FunctionComponent, useState } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { CSSTransition, Transition } from "react-transition-group";
 import Grid from "@material-ui/core/Grid";
 import { ParallaxBanner } from "react-scroll-parallax";
 import PlayCircleOutlineOutlinedIcon from "@material-ui/icons/PlayCircleOutlineOutlined";
@@ -53,10 +51,9 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
       marginTop: "50px",
-    },
-    "@keyframes fadeAnimation": {
-      from: { opacity: 0 },
-      to: { opacity: 1 },
+      "&>h3": {
+        marginLeft: "10px",
+      },
     },
     gridRow: {
       margin: "10px",
@@ -89,12 +86,12 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
   const classes = useStyles();
   const [src0, src1, src2, src3] = teasers;
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [isInViewport, setIsInViewport] = useState(false);
-  const [isTitleInViewport, setIsTitleInViewport] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isInViewport, setIsInViewport] = useState<boolean>(false);
+  const [isTitleInViewport, setIsTitleInViewport] = useState<boolean>(false);
 
-  const onChange = (isVisible) => setIsInViewport(isVisible);
-  const onChangeTitle = (isVisible) => setIsTitleInViewport(isVisible);
+  const onChange = (isVisible: boolean) => setIsInViewport(isVisible);
+  const onChangeTitle = (isVisible: boolean) => setIsTitleInViewport(isVisible);
 
   return (
     <VisibilitySensor partialVisibility onChange={onChange}>
@@ -107,6 +104,11 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
           <h3
             className={
               isTitleInViewport ? "move-enter-active" : "move-exit-active"
+            }
+            style={
+              isTitleInViewport
+                ? { transform: "translateY(10px)" }
+                : { transform: "translateY(-10px)" }
             }
           >
             {sectionName}
@@ -150,6 +152,7 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
                           width={(600 * 3) / 2}
                           height={600}
                           src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
+                          // @ts-ignore
                           frameborder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowfullscreen
@@ -194,6 +197,7 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
                           width={(600 * 3) / 2}
                           height={600}
                           src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
+                          // @ts-ignore
                           frameborder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowfullscreen
@@ -233,6 +237,7 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
                           width={(600 * 3) / 2}
                           height={600}
                           src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
+                          // @ts-ignore
                           frameborder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowfullscreen
@@ -272,6 +277,7 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
                           width={(600 * 3) / 2}
                           height={600}
                           src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
+                          // @ts-ignore
                           frameborder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowfullscreen

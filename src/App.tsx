@@ -90,7 +90,7 @@ function App() {
             "https://regiosport.ch/wp-content/uploads/2020/02/handball_1.liga_sv-fides-1.jpg",
             "https://sport-fan.ch/wp/wp-content/uploads/2015/02/Q3Q9770.jpg",
             "https://sport-fan.ch/wp/wp-content/uploads/2018/03/HCW_SCF.jpg",
-            "https://lh3.googleusercontent.com/proxy/cm0U9MjYp8sllOUIq-ZXb7DyUUjeOuDONS9TwdCG1HfXDlRcw2AVAqUHFjZbsLQuA4r7xsdarV-v8k14EsoOTa6jJoVTmmDirQKXIh0SNo3fLa5MTTRXc1BpsvmmtVNWEqx1L3o6zDgWRXg",
+            "https://c.nau.ch/i/KJOgp/1024/handballspieler-zelebriert-sein-tor.jpg",
           ]}
         />
         <ClockTeasers
