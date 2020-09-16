@@ -8,8 +8,6 @@ import VisibilitySensor from "react-visibility-sensor";
 
 import "./ClockTeasers.css";
 
-const duration = 1000;
-
 const customStyles = {
   content: {
     top: "50%",
@@ -18,26 +16,6 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-  },
-};
-
-const defaultStyle = {
-  transition: `opacity ${duration}ms ease-out`,
-  opacity: 0,
-};
-
-const transitionStyles = {
-  entering: {
-    opacity: 1,
-  },
-  entered: {
-    opacity: 1,
-  },
-  exiting: {
-    opacity: 0,
-  },
-  exited: {
-    opacity: 0,
   },
 };
 
