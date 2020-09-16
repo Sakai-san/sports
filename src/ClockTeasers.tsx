@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import { ParallaxBanner } from "react-scroll-parallax";
 import PlayCircleOutlineOutlinedIcon from "@material-ui/icons/PlayCircleOutlineOutlined";
 import Modal from "react-modal";
+import VisibilitySensor from "react-visibility-sensor";
 
 import "./ClockTeasers.css";
 
@@ -61,6 +62,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: "10px",
     },
     videoContainer: {
+      cursor: "pointer",
       position: "relative",
       display: "flex",
       alignItems: "center",
@@ -84,217 +86,213 @@ const ClockTeasers: FunctionComponent<ClockTeasersProps> = ({
   teasers,
   sectionName,
 }) => {
-  const [inProp, setInProp] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   const classes = useStyles();
   const [src0, src1, src2, src3] = teasers;
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [isInViewport, setIsInViewport] = useState(false);
+  const [isTitleInViewport, setIsTitleInViewport] = useState(false);
+
+  const onChange = (isVisible) => setIsInViewport(isVisible);
+  const onChangeTitle = (isVisible) => setIsTitleInViewport(isVisible);
+
   return (
-    <div className={classes.root}>
-      <Transition
-        mountOnEnter={false}
-        in={inProp}
-        enter={false}
-        timeout={duration}
+    <VisibilitySensor partialVisibility onChange={onChange}>
+      <div
+        className={`${classes.root} ${
+          isInViewport ? "fade-enter-active" : "fade-exit-active"
+        }`}
       >
-        {(state) => (
-          <div
-            style={{
-              ...defaultStyle,
-              ...transitionStyles[state],
-            }}
+        <VisibilitySensor onChange={onChangeTitle}>
+          <h3
+            className={
+              isTitleInViewport ? "move-enter-active" : "move-exit-active"
+            }
           >
-            <h3>{sectionName}</h3>
-          </div>
-        )}
-      </Transition>
+            {sectionName}
+          </h3>
+        </VisibilitySensor>
 
-      <button type="button" onClick={() => setInProp(true)}>
-        Click to Enter
-      </button>
-
-      <ParallaxBanner
-        layers={[
-          {
-            props: { style: { opacity: 0.2 } },
-            image: src0,
-            amount: 0.1,
-          },
-        ]}
-        style={{
-          height: "500px",
-        }}
-      >
-        <Grid container>
-          <Grid item justify="center" container className={classes.gridRow}>
-            <Grid item xs={7}>
-              <div
-                className={classes.videoContainer}
-                style={{ height: "300px" }}
-                onClick={() => setIsOpen(true)}
-              >
-                {isOpen ? (
-                  <Modal
-                    isOpen={isOpen}
-                    onRequestClose={() => setIsOpen(false)}
-                    style={customStyles}
-                  >
+        <ParallaxBanner
+          layers={[
+            {
+              props: { style: { opacity: 0.2 } },
+              image: src0,
+              amount: 0.1,
+            },
+          ]}
+          style={{
+            height: "500px",
+          }}
+        >
+          <Grid container>
+            <Grid item justify="center" container className={classes.gridRow}>
+              <Grid item xs={7}>
+                <div
+                  className={classes.videoContainer}
+                  style={{ height: "300px" }}
+                  onClick={() => setIsOpen(true)}
+                >
+                  {isOpen ? (
+                    <Modal
+                      isOpen={isOpen}
+                      onRequestClose={() => setIsOpen(false)}
+                      style={customStyles}
+                    >
+                      <>
+                        <button
+                          style={{ display: "none" }}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          close
+                        </button>
+                        <iframe
+                          width={(600 * 3) / 2}
+                          height={600}
+                          src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen
+                        />
+                      </>
+                    </Modal>
+                  ) : (
                     <>
-                      <button
-                        style={{ display: "none" }}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        close
-                      </button>
-                      <iframe
-                        width={(600 * 3) / 2}
-                        height={600}
-                        src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                      />
+                      <div className={classes.iconWrapper}>
+                        <PlayCircleOutlineOutlinedIcon
+                          style={{ fontSize: 50 }}
+                        />
+                      </div>
+                      <img src={src0} />
                     </>
-                  </Modal>
-                ) : (
-                  <>
-                    <div className={classes.iconWrapper}>
-                      <PlayCircleOutlineOutlinedIcon style={{ fontSize: 50 }} />
-                    </div>
-                    <img src={src0} />
-                  </>
-                )}
-              </div>
+                  )}
+                </div>
+              </Grid>
+            </Grid>
+
+            <Grid item justify="center" container className={classes.gridRow}>
+              <Grid item xs={3}>
+                <div
+                  className={classes.videoContainer}
+                  style={{ height: "100px" }}
+                  onClick={() => setIsOpen(true)}
+                >
+                  {isOpen ? (
+                    <Modal
+                      isOpen={isOpen}
+                      onRequestClose={() => setIsOpen(false)}
+                      style={customStyles}
+                    >
+                      <>
+                        <button
+                          style={{ display: "none" }}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          close
+                        </button>
+                        <iframe
+                          width={(600 * 3) / 2}
+                          height={600}
+                          src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen
+                        />
+                      </>
+                    </Modal>
+                  ) : (
+                    <>
+                      <div className={classes.iconWrapper}>
+                        <PlayCircleOutlineOutlinedIcon />
+                      </div>
+                      <img src={src1} />
+                    </>
+                  )}
+                </div>
+              </Grid>
+              <Grid item xs={3}>
+                <div
+                  className={classes.videoContainer}
+                  style={{ height: "100px" }}
+                  onClick={() => setIsOpen(true)}
+                >
+                  {isOpen ? (
+                    <Modal
+                      isOpen={isOpen}
+                      onRequestClose={() => setIsOpen(false)}
+                      style={customStyles}
+                    >
+                      <>
+                        <button
+                          style={{ display: "none" }}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          close
+                        </button>
+                        <iframe
+                          width={(600 * 3) / 2}
+                          height={600}
+                          src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen
+                        />
+                      </>
+                    </Modal>
+                  ) : (
+                    <>
+                      <div className={classes.iconWrapper}>
+                        <PlayCircleOutlineOutlinedIcon />
+                      </div>
+                      <img src={src2} />
+                    </>
+                  )}
+                </div>
+              </Grid>
+              <Grid item xs={3}>
+                <div
+                  className={classes.videoContainer}
+                  style={{ height: "100px" }}
+                  onClick={() => setIsOpen(true)}
+                >
+                  {isOpen ? (
+                    <Modal
+                      isOpen={isOpen}
+                      onRequestClose={() => setIsOpen(false)}
+                      style={customStyles}
+                    >
+                      <>
+                        <button
+                          style={{ display: "none" }}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          close
+                        </button>
+                        <iframe
+                          width={(600 * 3) / 2}
+                          height={600}
+                          src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen
+                        />
+                      </>
+                    </Modal>
+                  ) : (
+                    <>
+                      <div className={classes.iconWrapper}>
+                        <PlayCircleOutlineOutlinedIcon />
+                      </div>
+                      <img src={src3} />
+                    </>
+                  )}
+                </div>
+              </Grid>
             </Grid>
           </Grid>
-
-          <Grid item justify="center" container className={classes.gridRow}>
-            <Grid item xs={3}>
-              <div
-                className={classes.videoContainer}
-                style={{ height: "100px" }}
-                onClick={() => setIsOpen(true)}
-              >
-                {isOpen ? (
-                  <Modal
-                    isOpen={isOpen}
-                    onRequestClose={() => setIsOpen(false)}
-                    style={customStyles}
-                  >
-                    <>
-                      <button
-                        style={{ display: "none" }}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        close
-                      </button>
-                      <iframe
-                        width={(600 * 3) / 2}
-                        height={600}
-                        src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                      />
-                    </>
-                  </Modal>
-                ) : (
-                  <>
-                    <div className={classes.iconWrapper}>
-                      <PlayCircleOutlineOutlinedIcon />
-                    </div>
-                    <img src={src1} />
-                  </>
-                )}
-              </div>
-            </Grid>
-            <Grid item xs={3}>
-              <div
-                className={classes.videoContainer}
-                style={{ height: "100px" }}
-                onClick={() => setIsOpen(true)}
-              >
-                {isOpen ? (
-                  <Modal
-                    isOpen={isOpen}
-                    onRequestClose={() => setIsOpen(false)}
-                    style={customStyles}
-                  >
-                    <>
-                      <button
-                        style={{ display: "none" }}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        close
-                      </button>
-                      <iframe
-                        width={(600 * 3) / 2}
-                        height={600}
-                        src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                      />
-                    </>
-                  </Modal>
-                ) : (
-                  <>
-                    <div className={classes.iconWrapper}>
-                      <PlayCircleOutlineOutlinedIcon />
-                    </div>
-                    <img src={src2} />
-                  </>
-                )}
-              </div>
-            </Grid>
-            <Grid item xs={3}>
-              <div
-                className={classes.videoContainer}
-                style={{ height: "100px" }}
-                onClick={() => setIsOpen(true)}
-              >
-                {isOpen ? (
-                  <Modal
-                    isOpen={isOpen}
-                    onRequestClose={() => setIsOpen(false)}
-                    style={customStyles}
-                  >
-                    <>
-                      <button
-                        style={{ display: "none" }}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        close
-                      </button>
-                      <iframe
-                        width={(600 * 3) / 2}
-                        height={600}
-                        src="https://www.youtube.com/embed/nmdK3SDZTSM?autoplay=1"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                      />
-                    </>
-                  </Modal>
-                ) : (
-                  <>
-                    <div className={classes.iconWrapper}>
-                      <PlayCircleOutlineOutlinedIcon />
-                    </div>
-                    <img src={src3} />
-                  </>
-                )}
-              </div>
-            </Grid>
-          </Grid>
-        </Grid>
-      </ParallaxBanner>
-    </div>
+        </ParallaxBanner>
+      </div>
+    </VisibilitySensor>
   );
 };
 
